@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ClusruM</title>
+    <!-- Mengubah path CSS untuk Flask -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}" />
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="navbar-container">
+          <a href="{{ url_for('index') }}" class="logo">
+            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo" />
+          </a>
+          <!-- Menu toggle button for mobile -->
+          <button class="menu-toggle" aria-label="Toggle menu">
+            <span class="menu-icon"></span>
+          </button>
+          <!-- Navbar links (hidden by default on mobile) -->
+          <ul class="navbar-links">
+            <li><a href="#how-to-use-section" id="how-to-use">How to Use?</a></li>
+            <li><a href="#contact-section" id="contact">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div class="content">
+        <!-- hero section -->
+        <article>
+          <section class="hero">
+            <div class="hero-container">
+              <div class="hero-text">
+                <p>
+                  Aplikasi ini dirancang untuk membantu Anda mengelompokkan data perumahan berdasarkan spesifikasi dan harga menggunakan algoritma Fuzzy C-Means. Dengan analisis yang presisi, aplikasi ini mampu memberikan hasil terbaik
+                  dalam menentukan cluster yang paling sesuai untuk setiap kategori rumah.
+                </p>
+                <p>
+                  Melalui visualisasi yang interaktif, Anda dapat dengan mudah memahami pola dari data perumahan, seperti Rumah Kecil, Rumah Menengah, hingga Rumah Ultra Mewah. Solusi ini cocok untuk pengembang, agen properti, atau siapa
+                  saja yang ingin memahami tren klasifikasi perumahan dengan cepat dan efektif.
+                </p>
+              </div>
+              <div class="hero-image">
+                <img src="{{ url_for('static', filename='img/M.png') }}" alt="Hero Image" />
+              </div>
+            </div>
+          </section>
+        </article>
+
+        <!-- Form Cluster -->
+        <article id="form-cluster" class="form-cluster">
+          <section class="form-section">
+            <h1 class="form-title">Cobalah sekarang dan temukan bagaimana algoritma Fuzzy C-Means dapat memberikan hasil terbaik untuk data perumahan Anda!</h1>
+            <div class="form-container">
+              <!-- Mengubah form untuk mengirim data ke endpoint Flask -->
+              <form method="POST" action="{{ url_for('predict') }}">
+                <div class="form-group">
+                  <div class="input-group">
+                    <label for="luas-bangunan">Luas Bangunan</label>
+                    <input id="luas-bangunan" name="luas_bangunan" type="number" class="form-input" placeholder="Masukkan luas bangunan" required />
+                  </div>
+
+                  <div class="input-group">
+                    <label for="luas-tanah">Luas Tanah</label>
+                    <input id="luas-tanah" name="luas_tanah" type="number" class="form-input" placeholder="Masukkan luas tanah" required />
+                  </div>
+
+                  <div class="input-group">
+                    <label for="kamar-tidur">Kamar Tidur</label>
+                    <input id="kamar-tidur" name="kamar_tidur" type="number" class="form-input" placeholder="Masukkan jumlah kamar tidur" required />
+                  </div>
+
+                  <div class="input-group">
+                    <label for="kamar-mandi">Kamar Mandi</label>
+                    <input id="kamar-mandi" name="kamar_mandi" type="number" class="form-input" placeholder="Masukkan jumlah kamar mandi" required />
+                  </div>
+
+                  <div class="input-group">
+                    <label for="garasi">Garasi</label>
+                    <input id="garasi" name="garasi" type="number" class="form-input" placeholder="Masukkan jumlah garasi" required />
+                  </div>
+
+                  <div class="input-group">
+                    <label for="harga">Harga</label>
+                    <input id="harga" name="harga" type="number" class="form-input" placeholder="Masukkan harga" required />
+                  </div>
+                </div>
+
+                <div class="submit-button-container">
+                  <button type="submit" class="submit-button">Cluster</button>
+                </div>
+              </form>
+            </div>
+          </section>
+        </article>
+
+        <!-- Hasil Section -->
+        <article id="hasil" class="hasil">
+          <section class="result-section">
+            <div class="result-container">
+              <h1 class="result-title">{% if prediction %}
+                <div class="prediction-result">
+                  <p>Hasil Clustering: {{ prediction }}</p>
+                </div>
+                {% endif %}</h1>
+            </div>
+          </section>
+        </article>
+
+        <!-- Bagian How to Use tetap sama -->
+        <article id="how-to-use-section">
+          <!-- konten tidak berubah -->
+          <!-- existing content -->
+        </article>
+
+        <!-- Contact Form -->
+        <article id="contact-section">
+          <section class="contact-container">
+            <h1 class="contact-title">Kontak Kami</h1>
+            <p class="contact-subtitle">Jangan Sungkan Bertanya</p>
+            <!-- Mengubah form untuk mengirim ke endpoint contact Flask -->
+            <form class="contact-form" method="POST" action="{{ url_for('contact') }}">
+              <div class="form-group">
+                <input type="text" id="name" name="name" placeholder="Name*" required />
+                <input type="text" id="username" name="username" placeholder="Username" />
+              </div>
+              <div class="form-group">
+                <input type="email" id="email" name="email" placeholder="Email Address*" required />
+                <input type="number" id="phone-number" name="phone_number" placeholder="Phone Number" />
+              </div>
+              <div class="form-group full-width">
+                <textarea id="message" name="message" placeholder="Your Message*" rows="4" required></textarea>
+              </div>
+              <div class="form-submit">
+                <button type="submit" class="submit-button-contact">
+                  <span>Kirim</span>
+                  <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M10.3009 13.6949L20.102 3.89742M10.5795 14.1355L12.8019 18.5804C13.339 19.6545 13.6075 20.1916 13.9458 20.3356C14.2394 20.4606 14.575 20.4379 14.8492 20.2747C15.1651 20.0866 15.3591 19.5183 15.7472 18.3818L19.9463 6.08434C20.2845 5.09409 20.4535 4.59896 20.3378 4.27142C20.2371 3.98648 20.013 3.76234 19.7281 3.66167C19.4005 3.54595 18.9054 3.71502 17.9151 4.05315L5.61763 8.2523C4.48114 8.64037 3.91289 8.83441 3.72478 9.15032C3.56153 9.42447 3.53891 9.76007 3.66389 10.0536C3.80791 10.3919 4.34498 10.6605 5.41912 11.1975L9.86397 13.42C10.041 13.5085 10.1295 13.5527 10.2061 13.6118C10.2742 13.6643 10.3352 13.7253 10.3876 13.7933C10.4468 13.87 10.491 13.9585 10.5795 14.1355Z"
+                      stroke="#ffffff"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
+                </button>
+              </div>
+            </form>
+          </section>
+        </article>
+      </div>
+    </main>
+    
+    <!-- Mengubah path JavaScript untuk Flask -->
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+
+    <footer class="footer">
+      <h1 class="footer-title">&copy; Dhendy Mardiansyah</h1>
+    </footer>
+  </body>
+</html>

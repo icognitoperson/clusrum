@@ -1,0 +1,782 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+/* General styles for the navbar */
+header {
+  position: sticky; /* Keep navbar at the top when scrolling */
+  top: 0;
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: for subtle shadow */
+  z-index: 100;
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.navbar-container {
+  max-width: 1200px; /* Optional: set max width for large screens */
+  margin: 0 auto;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo styles */
+.logo img {
+  height: 40px; /* Adjust logo size */
+}
+
+/* Navbar links styles */
+.navbar-links {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navbar-links li {
+  margin-left: 20px;
+}
+
+.navbar-links a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.navbar-links a:hover {
+  color: #f39c12; /* Change color on hover */
+}
+
+/* Menu toggle button styles (for mobile) */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 200;
+}
+
+.menu-icon {
+  width: 30px;
+  height: 3px;
+  background-color: #333;
+  position: relative;
+}
+
+.menu-icon::before,
+.menu-icon::after {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 3px;
+  background-color: #333;
+  transition: all 0.3s ease;
+}
+
+.menu-icon::before {
+  top: -8px;
+}
+
+.menu-icon::after {
+  top: 8px;
+}
+
+/* When the menu is open, adjust the icon */
+.menu-toggle.open .menu-icon {
+  background-color: transparent;
+}
+
+.menu-toggle.open .menu-icon::before {
+  transform: rotate(45deg);
+  top: 0;
+}
+
+.menu-toggle.open .menu-icon::after {
+  transform: rotate(-45deg);
+  top: 0;
+}
+
+/* Mobile navbar links (hidden by default) */
+.navbar-links {
+  display: flex;
+  gap: 20px;
+}
+
+.navbar-links.mobile {
+  display: none;
+  flex-direction: column;
+  width: 100%;
+  position: absolute;
+  top: 60px; /* Adjust based on navbar height */
+  left: 0;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: add shadow for dropdown effect */
+}
+
+.navbar-links.mobile li {
+  margin: 10px 0;
+  text-align: center;
+}
+
+.navbar-links.mobile a {
+  font-size: 18px;
+  padding: 10px 0;
+  color: #333;
+}
+
+.navbar-links.mobile a:hover {
+  color: #f39c12;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .navbar-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar-links {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .navbar-links {
+    display: flex;
+    gap: 20px;
+  }
+
+  .navbar-links.mobile {
+    display: flex;
+  }
+}
+
+/* General Styling for Hero Section */
+.hero {
+  background-color: #9d7241; /* Warna background sesuai dengan gambar contoh */
+  padding: 50px 20px;
+  color: white; /* Warna teks */
+}
+
+.hero-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap; /* Agar fleksibel di layar kecil */
+}
+
+.hero-text {
+  flex: 1;
+  padding: 20px;
+  max-width: 600px; /* Batasi lebar teks */
+}
+
+.hero-text p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  text-align: center;
+  font-weight: 600; /* Menjadikan teks semi bold */
+}
+
+.hero-image {
+  flex: 1;
+  padding: 20px;
+  text-align: center;
+}
+
+.hero-image img {
+  max-width: 70%;
+  height: auto;
+  border-radius: 10px; /* Opsional: buat gambar sedikit melengkung */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-container {
+    flex-direction: column; /* Susun secara vertikal di layar kecil */
+    text-align: center; /* Teks dan gambar rata tengah */
+  }
+
+  .hero-text {
+    margin-bottom: 20px;
+  }
+}
+
+.form-cluster,
+.hasil {
+  width: 100%;
+  display: block;
+}
+
+.form-section {
+  padding: 40px 80px;
+  max-width: 1500px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.form-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  margin: 0 250px;
+  max-width: 90%; /* Sesuaikan lebar maksimal */
+}
+
+.form-container {
+  margin-top: 30px;
+}
+
+.form-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.input-group {
+  flex: 1 1 200px;
+  max-width: 180px;
+  margin-bottom: 15px;
+}
+
+.input-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: black;
+  margin-bottom: 8px;
+}
+
+.form-input {
+  width: 100%;
+  height: 50px;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  background-color: white;
+  color: #333;
+  box-sizing: border-box;
+}
+
+/* Submit Button Styling */
+.submit-button-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.submit-button {
+  padding: 12px 40px;
+  background-color: #9f580a;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-size: 32px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: rgb(83, 45, 12);
+}
+
+/* Styling for Result Section */
+.result-section {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.result-container {
+  border: 4px solid #928a8a;
+  border-radius: 30px;
+  padding: 10px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.6);
+}
+
+.result-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+  .form-title {
+    font-size: 1rem;
+    margin: 0 0;
+  }
+
+  .input-group {
+    flex: 1 1 100%;
+  }
+
+  .submit-button {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+}
+
+/* Styling for the "How to Use?" section */
+.how-to-use-section {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1200px;
+  text-align: center;
+}
+
+.how-to-use-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #9d7241; /* Example of color */
+  margin-bottom: 1.5rem;
+}
+
+.how-to-use-content ol {
+  text-align: left;
+  color: #9d7241;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.how-to-use-list {
+  list-style-type: decimal;
+  list-style-position: inside;
+  margin-top: 1.5rem;
+  font-size: 1rem;
+}
+
+.how-to-use-step-title {
+  font-weight: 600;
+  display: inline-block;
+}
+
+.how-to-use-sublist {
+  list-style-type: disc;
+  list-style-position: inside;
+  padding-left: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .how-to-use-section {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .how-to-use-title {
+    font-size: 1.5rem;
+  }
+
+  .how-to-use-list {
+    font-size: 0.875rem;
+  }
+
+  .how-to-use-step-title {
+    font-size: 1.25rem;
+  }
+
+  .how-to-use-sublist {
+    padding-left: 1.25rem;
+  }
+}
+
+/* Styling for the Contact Section */
+.contact-section {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1200px;
+  text-align: center;
+}
+
+.contact-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #6c4f27; /* Example of color */
+  margin-bottom: 5px;
+}
+
+.contact-subtitle {
+  color: #9d7241;
+  font-weight: 500;
+  margin-bottom: 2rem;
+}
+
+.contact-form {
+  padding-top: 1.25rem;
+  padding-bottom: 6rem;
+}
+
+.contact-form-container {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact-input-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.input-group {
+  margin-top: 1rem;
+}
+
+.contact-input,
+.contact-textarea {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 2px solid rgba(157, 114, 65, 0.5);
+  font-size: 1rem;
+  font-family: sans-serif;
+}
+
+.contact-textarea {
+  resize: vertical;
+}
+
+.submit-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.submit-button {
+  background-color: #f0c808;
+  color: white;
+  font-size: 1rem;
+  padding: 0.75rem 2rem;
+  font-weight: 600;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.submit-button:hover {
+  background-color: #6c4f27;
+}
+
+.submit-button-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .contact-section {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .contact-title {
+    font-size: 1.5rem;
+  }
+
+  .contact-subtitle {
+    font-size: 1rem;
+  }
+
+  .contact-form-container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .contact-input-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-input,
+  .contact-textarea {
+    font-size: 0.875rem;
+  }
+
+  .submit-button {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* Styling for the Contact Section */
+.contact-section {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1200px;
+  text-align: center;
+}
+
+.contact-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #6c4f27; /* Example of color */
+  margin-bottom: 5px;
+}
+
+.contact-subtitle {
+  color: #9d7241;
+  font-weight: 500;
+  margin-bottom: 2rem;
+}
+
+.contact-form {
+  padding-top: 1.25rem;
+  padding-bottom: 6rem;
+}
+
+.contact-form-container {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact-input-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.input-group {
+  margin-top: 1rem;
+}
+
+.contact-input,
+.contact-textarea {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 2px solid rgba(157, 114, 65, 0.5);
+  font-size: 1rem;
+  font-family: sans-serif;
+}
+
+.contact-textarea {
+  resize: vertical;
+}
+
+.submit-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.submit-button {
+  background-color: #9f580a;
+  color: white;
+  font-size: 30px;
+  padding: 0.75rem 2rem;
+  font-weight: 600;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.submit-button:hover {
+  background-color: #6c4f27;
+}
+
+.submit-button-content {
+  display: flex;
+  align-items: end;
+  gap: 8px;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .contact-section {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .contact-title {
+    font-size: 1.5rem;
+  }
+
+  .contact-subtitle {
+    font-size: 1rem;
+  }
+
+  .contact-form-container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .contact-input-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-input,
+  .contact-textarea {
+    font-size: 0.875rem;
+  }
+
+  .submit-button {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.contact-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.contact-title {
+  font-size: 24px;
+  color: #9d7241;
+  font-weight: bold;
+}
+
+.contact-subtitle {
+  font-size: 16px;
+  color: #ddb17f;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.form-group.full-width {
+  flex: 1 1 100%;
+}
+
+input,
+textarea {
+  flex: 1;
+  padding: 10px;
+  font-size: 14px;
+  border: 2px solid rgba(157, 114, 65, 0.5);
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+textarea {
+  resize: none;
+}
+
+.form-submit {
+  display: flex;
+  justify-content: flex-end; /* Posisi tombol di sebelah kanan */
+  margin-top: 16px;
+}
+
+.submit-button-contact {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #9d7241;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button-contact:hover {
+  background-color: #704c29;
+}
+
+@media (max-width: 768px) {
+  .form-group {
+    flex-direction: column;
+  }
+}
+
+/* Footer styles */
+.footer {
+  padding-bottom: 2rem; /* Equivalent to pb-8 */
+  margin: 0 auto;
+  max-width: 1200px; /* Equivalent to max-w-screen-xl */
+  text-align: center;
+  font-weight: 600; /* Equivalent to font-semibold */
+}
+
+.footer h1 {
+  font-size: 24px; /* Equivalent to text-2xl */
+  color: #9d7241; /* Replace 'text-abutua' with the desired color */
+  font-weight: 600; /* Equivalent to font-semibold */
+}
+
+.footer-title {
+  font-size: 24px; /* Equivalent to text-2xl */
+}
+
+@media (min-width: 768px) {
+  .footer h1 {
+    font-size: 24px; /* Equivalent to md:text-3xl */
+  }
+}
+
+/* Remove arrows from number input */
+.form-input[type="number"]::-webkit-inner-spin-button,
+.form-input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.form-input[type="number"] {
+  -moz-appearance: textfield; /* For Firefox */
+}
+
+/* Placeholder style */
+.form-input::placeholder {
+  color: #999;
+  font-size: 14px;
+}
