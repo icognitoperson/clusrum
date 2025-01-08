@@ -1,4 +1,4 @@
-app = "nama-aplikasi-anda"
+app = "clusrum"
 primary_region = "sin" # Ubah ke region yang sesuai, misalnya "sin" untuk Singapura
 
 [build]
